@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Room</title>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <h1>Chat Room</h1>
+    <div>
+        <input id="username" placeholder="Enter your username" />
+        <input id="room" placeholder="Enter room name" />
+        <button onclick="joinRoom()">Join Room</button>
+        <button onclick="leaveRoom()">Leave Room</button>
+    </div>
+    <div id="messages"></div>
+
+    <script>
+        const socket = io('http://localhost:3000'); // Adjust if your server is on a different port
+
+        // Listen for the userJoined and userLeft events when the socket is initialized (once)
+        socket.on('userJoined', (message) => {
+            const messagesDiv = document.getElementById('messages');
+            // messagesDiv.innerHTML += `<p>${message.username} has joined the room.</p>`;
+        });
+
+        socket.on('userLeft', (message) => {
+            const messagesDiv = document.getElementById('messages');
+            // messagesDiv.innerHTML += `<p>${message.username} has left the room.</p>`;
+        });
+
+        function joinRoom() {
+            const username = document.getElementById('username').value;
+            const room = document.getElementById('room').value;
+            socket.emit('joinRoom', { room, username });
+
+            // // Show a message that the user has joined the room
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `<p>${username} has joined the room.</p>`;
+        }
+
+        function leaveRoom() {
+            const username = document.getElementById('username').value;
+            const room = document.getElementById('room').value;
+            socket.emit('leaveRoom', { room, username });
+
+            // Show a message that the user has left the room
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML += `<p>${username} has left the room.</p>`;
+        }
+    </script>
+</body>
+</html>

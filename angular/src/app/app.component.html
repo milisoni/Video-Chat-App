@@ -1,0 +1,38 @@
+<div class="video-call-container">
+  <!-- Local Video Stream -->
+  <video
+    #localVideo
+    autoplay
+    playsinline
+    muted
+    [style.display]="localStream ? 'block' : 'none'"
+    style="width: 300px; height: 200px; border: 2px solid green;"
+  ></video>
+
+  <!-- Remote Video Stream -->
+  <video
+    #remoteVideo
+    autoplay
+    playsinline
+    [style.display]="remoteStream ? 'block' : 'none'"
+    style="width: 300px; height: 200px; border: 2px solid blue;"
+  ></video>
+
+  <!-- Call Controls -->
+  <div class="call-controls">
+    <button (click)="startCall()">Start Call</button>
+    <button (click)="endCall()">End Call</button>
+  </div>
+</div>
+
+<h1>Video Chat App</h1>
+<nav>
+  <ul>
+    <li><a routerLink="login" routerLinkActive="active">Login</a></li>
+    <li><a routerLink="register" routerLinkActive="active">Register</a></li>
+    <li><a routerLink="chat" routerLinkActive="active">Chatrooms</a></li>
+  </ul>
+</nav>
+
+
+<router-outlet></router-outlet>

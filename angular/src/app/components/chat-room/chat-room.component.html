@@ -1,0 +1,26 @@
+<div>
+    <h3>Available Chat Rooms</h3>
+    <ul>
+      <li *ngFor="let room of chatRooms" (click)="joinRoom(room.id)">
+        {{ room.name }}
+      </li>
+    </ul>
+  
+    <input [(ngModel)]="newRoomName" placeholder="New Room Name" />
+    <button (click)="createRoom()">Create Room</button>
+  </div>
+
+
+  <h1>Chat Room</h1>
+    <div>
+        <input id="username" placeholder="Enter your username" />
+        <input id="room" placeholder="Enter room name" />
+        <!-- <button (click)="joinRoom()">Join Room</button> -->
+        <button (click)="leaveRoom()">Leave Room</button>
+    </div>
+
+    <div>
+      <button (click)="logout()">Log Out</button>
+    </div>
+    <div id="messages"></div>
+  
