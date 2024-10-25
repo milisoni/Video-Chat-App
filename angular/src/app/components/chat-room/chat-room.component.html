@@ -1,7 +1,7 @@
 <div>
     <h3>Available Chat Rooms</h3>
     <ul>
-      <li *ngFor="let room of chatRooms" (click)="joinRoom(room.id)">
+      <li *ngFor="let room of chatRooms" (click)="joinRoom()">
         {{ room.name }}
       </li>
     </ul>
@@ -13,14 +13,25 @@
 
   <h1>Chat Room</h1>
     <div>
-        <input id="username" placeholder="Enter your username" />
-        <input id="room" placeholder="Enter room name" />
-        <!-- <button (click)="joinRoom()">Join Room</button> -->
+        <input id="username" placeholder="Enter your Name" />
+        <input id="room" placeholder="Enter Room Name" />
+        <button (click)="joinRoom()">Join Room</button>
         <button (click)="leaveRoom()">Leave Room</button>
     </div>
+
+    <div *ngIf="joinedChatRoom">
+    <app-video-call></app-video-call>
+  </div>
+
+    <div *ngFor="let message of messages">
+      {{message}}
+    </div>
+    <div class="messages"></div>
+
+   
+    <div id="messages"></div>
 
     <div>
       <button (click)="logout()">Log Out</button>
     </div>
-    <div id="messages"></div>
   

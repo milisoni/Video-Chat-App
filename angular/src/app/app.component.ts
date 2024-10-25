@@ -5,11 +5,13 @@ import { VideoCallService } from './services/video-call.service';
 import { HttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule, CommonModule, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterModule, CommonModule, RouterLink, RouterLinkActive, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

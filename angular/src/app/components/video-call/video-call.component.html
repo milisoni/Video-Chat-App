@@ -1,6 +1,26 @@
-<div>
-    <h3>Video Call</h3>
-    <video [srcObject]="localStream" autoplay muted></video>
-    <video [srcObject]="remoteStream" autoplay></video>
+<div class="video-call-container">
+  <!-- Local Video Stream -->
+  <video
+    #localVideo
+    autoplay
+    playsinline
+    muted
+    [style.display]="localStream ? 'block' : 'none'"
+    style="width: 300px; height: 200px; border: 2px solid green;"
+  ></video>
+
+  <!-- Remote Video Stream -->
+  <video
+    #remoteVideo
+    autoplay
+    playsinline
+    [style.display]="remoteStream ? 'block' : 'none'"
+    style="width: 300px; height: 200px; border: 2px solid blue;"
+  ></video>
+
+  <!-- Call Controls -->
+  <div class="call-controls">
+    <button (click)="startCall()">Start Call</button>
+    <button (click)="endCall()">End Call</button>
   </div>
-  
+</div>
